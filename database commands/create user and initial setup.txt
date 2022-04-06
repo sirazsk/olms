@@ -1,0 +1,5 @@
+//first create database olms then create user olms with password olms then grant all priveleges to user olms
+
+create database olms;
+create user olms with password 'olms';
+grant all privileges on database olms to olms;
