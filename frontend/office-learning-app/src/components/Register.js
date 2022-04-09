@@ -5,11 +5,13 @@ import * as Yup from 'yup';
 
 import { register } from '../slices/auth';
 import { clearMessage } from '../slices/message';
+import { Navigate } from 'react-router-dom';
 
 const Register = () => {
   const [successful, setSuccessful] = useState(false);
 
   const { message } = useSelector((state) => state.message);
+  const { isLoggedIn } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -58,6 +60,10 @@ const Register = () => {
         setSuccessful(false);
       });
   };
+
+  if (isLoggedIn) {
+    return <Navigate to='/home' />;
+  }
 
   return (
     <div className='col-md-12 signup-form'>

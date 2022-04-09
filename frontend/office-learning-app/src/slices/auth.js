@@ -6,7 +6,7 @@ import AuthService from '../services/auth.service';
 const user = JSON.parse(localStorage.getItem('user'));
 
 export const register = createAsyncThunk(
-  '/signup',
+  '/auth/signup',
   async ({ fullName, email, password }, thunkAPI) => {
     try {
       const response = await AuthService.register(fullName, email, password);
@@ -26,7 +26,7 @@ export const register = createAsyncThunk(
 );
 
 export const login = createAsyncThunk(
-  '/signin',
+  '/auth/signin',
   async ({ email, password }, thunkAPI) => {
     try {
       const data = await AuthService.login(email, password);
@@ -45,38 +45,47 @@ export const login = createAsyncThunk(
   }
 );
 
-export const logout = createAsyncThunk('/logout', async () => {
+export const logout = createAsyncThunk('/auth/logout', async () => {
   await AuthService.logout();
 });
 
 const initialState = user
-  ? { isLoggedIn: true, user }
-  : { isLoggedIn: false, user: null };
+  ? { isLoggedIn: true, user, isInstructor: false }
+  : { isLoggedIn: false, user: null, isInstructor: false };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setIsInstructor: (state) => {
+      state.isInstructor = false;
+    },
+    setIsStudent: (state) => {
+      state.isInstructor = true;
+    },
+  },
   extraReducers: {
-    [register.fulfilled]: (state, action) => {
+    [register.fulfilled]: (state) => {
       state.isLoggedIn = false;
     },
-    [register.rejected]: (state, action) => {
+    [register.rejected]: (state) => {
       state.isLoggedIn = false;
     },
     [login.fulfilled]: (state, action) => {
       state.isLoggedIn = true;
       state.user = action.payload.user;
     },
-    [login.rejected]: (state, action) => {
+    [login.rejected]: (state) => {
       state.isLoggedIn = false;
       state.user = null;
     },
-    [logout.fulfilled]: (state, action) => {
+    [logout.fulfilled]: (state) => {
       state.isLoggedIn = false;
       state.user = null;
     },
   },
 });
 
-const { reducer } = authSlice;
+const { reducer, actions } = authSlice;
+export const { setIsInstructor, setIsStudent } = actions;
 export default reducer;

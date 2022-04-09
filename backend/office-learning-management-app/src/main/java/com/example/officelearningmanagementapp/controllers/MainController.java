@@ -22,6 +22,7 @@ import com.example.officelearningmanagementapp.models.Course;
 import com.example.officelearningmanagementapp.models.MyUser;
 import com.example.officelearningmanagementapp.payload.request.NewCourseRequest;
 import com.example.officelearningmanagementapp.payload.response.ApiResponse;
+import com.example.officelearningmanagementapp.payload.response.NewCourseResponse;
 import com.example.officelearningmanagementapp.repository.CourseRepository;
 import com.example.officelearningmanagementapp.repository.UserRepository;
 
@@ -52,7 +53,10 @@ public class MainController {
 	@GetMapping("/student/courses")
 	public ResponseEntity<List<Course>> getAllCourses()
 	{
-		return new ResponseEntity<>( courseRepository.findAll(),HttpStatus.OK);
+		//delete password entry from the list
+		List<Course> myCourses = courseRepository.findAll();
+		myCourses.forEach(course->course.getMyUser().setPassword(null));
+		return new ResponseEntity<>( myCourses,HttpStatus.OK);
 	} 
 	
 	//INSTRUCTOR API
@@ -77,7 +81,8 @@ public class MainController {
         //create new course and add it to the repository
         Course course = new Course(courseName,courseDescription,myUser);
         courseRepository.save(course);
-        return ResponseEntity.ok(new ApiResponse(true, "new course added successfully"));
+        course.getMyUser().setPassword(null);
+        return ResponseEntity.ok(new NewCourseResponse(true, "new course added successfully",course));
 	}
 	
 	//get courses created by the current user
@@ -90,8 +95,13 @@ public class MainController {
 		
 		//get user by email
 		MyUser myUser = userRepository.findUserByEmail(currentUserEmail);
+		
 		int userId = myUser.getId();
 		List<Course> myCourses = courseRepository.findByMyUserId(userId);
+		
+		//delete password entry from the list
+		myCourses.forEach(course->course.getMyUser().setPassword(null));
+		
 		return new ResponseEntity<>(myCourses, HttpStatus.OK);
 	}
 	

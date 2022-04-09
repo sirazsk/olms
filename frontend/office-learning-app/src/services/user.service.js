@@ -10,19 +10,20 @@ const getHello = () => {
 const uploadFile = (file) => {
   let formData = new FormData();
   formData.append('file', file);
+
   return axios.post(API_URL + 'upload', formData, {
     headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' },
   });
 };
 
-const getFiles = () => {
+const getAllFiles = () => {
   return axios.get(API_URL + 'files', { headers: authHeader() });
 };
 
 const userService = {
   getHello,
   uploadFile,
-  getFiles,
+  getAllFiles,
 };
 
 export default userService;

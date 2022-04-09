@@ -18,7 +18,7 @@ public class MyUser {
 	private String email;
 	
 	private String fullName;
-	
+
 	private String password;
 	
 	@OneToMany(mappedBy = "myUser")

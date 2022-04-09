@@ -9,18 +9,31 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Home from './components/Home';
 import Profile from './components/Profile';
-
-import { logout } from './slices/auth';
+import Student from './components/Student';
 import Video from './components/Video';
+import Instructor from './components/Instructor';
+
+import { logout, setIsInstructor, setIsStudent } from './slices/auth';
 
 const App = () => {
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const { user: currentUser, isInstructor } = useSelector(
+    (state) => state.auth
+  );
   const dispatch = useDispatch();
 
   const logOut = useCallback(() => {
     dispatch(logout());
   }, [dispatch]);
 
+  const setInstructor = useCallback(() => {
+    dispatch(setIsInstructor());
+  }, [dispatch]);
+
+  const setStudent = useCallback(() => {
+    dispatch(setIsStudent());
+  }, [dispatch]);
+
+  console.count('rendered App');
   return (
     <Router>
       <div>
@@ -54,9 +67,23 @@ const App = () => {
           {currentUser ? (
             <div className='navbar-nav ms-auto'>
               <li className='nav-item'>
-                <Link to={'../profile'} className='nav-link'>
-                  {currentUser.username}
-                </Link>
+                {!isInstructor ? (
+                  <Link
+                    className='nav-link'
+                    to={'../instructor'}
+                    onClick={setStudent}
+                  >
+                    Go To Instructor
+                  </Link>
+                ) : (
+                  <Link
+                    className='nav-link'
+                    to={'../student'}
+                    onClick={setInstructor}
+                  >
+                    Go To Student
+                  </Link>
+                )}
               </li>
               <li className='nav-item'>
                 <a href='/login' className='nav-link' onClick={logOut}>
@@ -83,11 +110,14 @@ const App = () => {
 
         <div className='container mt-3'>
           <Routes>
+            <Route exact path='/' element={<Home />} />
             <Route exact path='/home' element={<Home />} />
             <Route exact path='/video' element={<Video />} />
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/register' element={<Register />} />
             <Route exact path='/profile' element={<Profile />} />
+            <Route exact path='/instructor' element={<Instructor />} />
+            <Route exact path='/student' element={<Student />} />
           </Routes>
         </div>
       </div>
