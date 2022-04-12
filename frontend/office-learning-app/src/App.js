@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import 'antd/dist/antd.min.css';
 
 import Login from './components/Login';
 import Register from './components/Register';
@@ -12,6 +12,8 @@ import Profile from './components/Profile';
 import Student from './components/Student';
 import Video from './components/Video';
 import Instructor from './components/Instructor';
+import EditCourse from './components/Instructor/EditCourse';
+import NewCourse from './components/Instructor/NewCourse';
 
 import { logout, setIsInstructor, setIsStudent } from './slices/auth';
 
@@ -27,100 +29,100 @@ const App = () => {
 
   const setInstructor = useCallback(() => {
     dispatch(setIsInstructor());
-  }, [dispatch]);
+  }, [isInstructor]);
 
   const setStudent = useCallback(() => {
     dispatch(setIsStudent());
-  }, [dispatch]);
+  }, [isInstructor]);
 
   console.count('rendered App');
   return (
     <Router>
-      <div>
-        <nav className='navbar navbar-expand navbar-dark bg-dark'>
-          <Link to={'../home'} className='navbar-brand'>
-            Office Learning Management App
-          </Link>
-          <div className='navbar-nav mr-auto'>
-            <li className='nav-item'>
-              <Link to={'../home'} className='nav-link'>
-                Home
-              </Link>
-            </li>
+      <nav className='navbar navbar-expand navbar-dark bg-dark'>
+        <Link to={'../home'} className='navbar-brand'>
+          Office Learning Management App
+        </Link>
+        <div className='navbar-nav mr-auto'>
+          <li className='nav-item'>
+            <Link to={'../home'} className='nav-link'>
+              Home
+            </Link>
+          </li>
 
-            {currentUser && (
-              <div className='navbar-nav mr-auto'>
-                <li>
-                  <Link to={'../profile'} className='nav-link'>
-                    User
-                  </Link>
-                </li>
-                <li>
-                  <Link to={'../video'} className='nav-link'>
-                    Video
-                  </Link>
-                </li>
-              </div>
-            )}
-          </div>
-
-          {currentUser ? (
-            <div className='navbar-nav ms-auto'>
-              <li className='nav-item'>
-                {!isInstructor ? (
-                  <Link
-                    className='nav-link'
-                    to={'../instructor'}
-                    onClick={setStudent}
-                  >
-                    Go To Instructor
-                  </Link>
-                ) : (
-                  <Link
-                    className='nav-link'
-                    to={'../student'}
-                    onClick={setInstructor}
-                  >
-                    Go To Student
-                  </Link>
-                )}
-              </li>
-              <li className='nav-item'>
-                <a href='/login' className='nav-link' onClick={logOut}>
-                  LogOut
-                </a>
-              </li>
-            </div>
-          ) : (
-            <div className='navbar-nav ms-auto'>
-              <li className='nav-item'>
-                <Link to={'../login'} className='nav-link'>
-                  Login
+          {currentUser && (
+            <div className='navbar-nav mr-auto'>
+              <li>
+                <Link to={'../profile'} className='nav-link'>
+                  User
                 </Link>
               </li>
-
-              <li className='nav-item'>
-                <Link to={'../register'} className='nav-link'>
-                  Sign Up
+              <li>
+                <Link to={'../video'} className='nav-link'>
+                  Video
                 </Link>
               </li>
             </div>
           )}
-        </nav>
-
-        <div className='container mt-3'>
-          <Routes>
-            <Route exact path='/' element={<Home />} />
-            <Route exact path='/home' element={<Home />} />
-            <Route exact path='/video' element={<Video />} />
-            <Route exact path='/login' element={<Login />} />
-            <Route exact path='/register' element={<Register />} />
-            <Route exact path='/profile' element={<Profile />} />
-            <Route exact path='/instructor' element={<Instructor />} />
-            <Route exact path='/student' element={<Student />} />
-          </Routes>
         </div>
-      </div>
+
+        {currentUser ? (
+          <div className='navbar-nav ms-auto'>
+            <li className='nav-item'>
+              {isInstructor ? (
+                <Link
+                  className='nav-link'
+                  to={'../student'}
+                  onClick={setStudent}
+                >
+                  Go To Student
+                </Link>
+              ) : (
+                <Link
+                  className='nav-link'
+                  to={'../instructor'}
+                  onClick={setInstructor}
+                >
+                  Go To Instructor
+                </Link>
+              )}
+            </li>
+            <li className='nav-item'>
+              <a href='/login' className='nav-link' onClick={logOut}>
+                LogOut
+              </a>
+            </li>
+          </div>
+        ) : (
+          <div className='navbar-nav ms-auto'>
+            <li className='nav-item'>
+              <Link to={'../login'} className='nav-link'>
+                Login
+              </Link>
+            </li>
+
+            <li className='nav-item'>
+              <Link to={'../register'} className='nav-link'>
+                Sign Up
+              </Link>
+            </li>
+          </div>
+        )}
+      </nav>
+
+      <main className='container-fluid mt-3'>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/home' element={<Home />} />
+          <Route exact path='/video' element={<Video />} />
+          <Route exact path='/login' element={<Login />} />
+          <Route exact path='/register' element={<Register />} />
+          <Route exact path='/profile' element={<Profile />} />
+          <Route exact path='/instructor' element={<Instructor />} />
+          <Route exact path='/student' element={<Student />} />
+          <Route exact path='/instructor/course/:id' element={<EditCourse />} />
+          <Route exact path='/instructor/newcourse' element={<NewCourse />} />
+        </Routes>
+      </main>
     </Router>
   );
 };

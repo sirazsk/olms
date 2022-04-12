@@ -1,13 +1,114 @@
-body {
-  margin: 0;
+:root {
+  --primaryLightColor: #d4e6a5;
+  --primaryColor: #476a2e;
+  --primaryDarkColor: #c02c03;
+  --mainWhite: #fff;
+  --offWhite: #f7f7f7;
+  --mainBackground: #f1f5f8;
+  --mainOverlay: rgba(35, 10, 36, 0.4);
+  --mainBlack: #222;
+  --mainGrey: #ececec;
+  --darkGrey: #afafaf;
+  --mainRed: #bd0303;
+  --mainTransition: all 0.3s linear;
+  --mainSpacing: 0.3rem;
+  --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+  --mainBorderRadius: 0.25rem;
+  --smallWidth: 85vw;
+  --maxWidth: 40rem;
+  --fullWidth: 1170px;
+}
+
+.body-class {
+  background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fG9ubGluZSUyMGxlYXJuaW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1600&q=60');
+  object-fit: fill;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* background-color: var(--offWhite); */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.background-grey {
+  background: var(--mainGrey);
+  border-radius: 10px;
+  padding: 2rem;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+.login-form,
+.signup-form {
+  max-width: 350px;
+  margin: auto;
+}
+
+.card {
+  background-color: #f7f7f7;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.course {
+  background: var(--mainGrey);
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  display: grid;
+  border-radius: var(--mainBorderRadius);
+}
+.course h5 {
+  color: rgb(70, 70, 70);
+}
+.course p {
+  color: darkgray;
+}
+.course .course-center {
+  width: fit-content;
+  display: grid;
+  row-gap: 2rem;
+}
+.course-section {
+  text-align: center;
+}
+.add-course {
+  margin-top: 5rem;
+  text-align: end;
+}
+.go-back {
+  margin: auto;
+  text-align: center;
+}
+.form {
+  text-align: left;
+}
+.form-main {
+  margin: auto;
+  max-width: 900px;
 }

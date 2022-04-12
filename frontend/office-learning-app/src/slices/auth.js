@@ -58,10 +58,10 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setIsInstructor: (state) => {
-      state.isInstructor = false;
+      state.isInstructor = true;
     },
     setIsStudent: (state) => {
-      state.isInstructor = true;
+      state.isInstructor = false;
     },
   },
   extraReducers: {

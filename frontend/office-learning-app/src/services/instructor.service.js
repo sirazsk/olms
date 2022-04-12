@@ -26,7 +26,7 @@ const updateCourse = (courseName, courseDescription, id) => {
 };
 //DELETE COURSE by id (deletes course if the user is the owner)
 const deleteCourse = (id) => {
-  return axios.delete(API_URL + 'instructor/courses/' + id, {
+  return axios.delete(API_URL + `instructor/courses/${id}`, {
     headers: authHeader(),
   });
 };

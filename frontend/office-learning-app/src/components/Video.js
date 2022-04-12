@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import userService from '../services/user.service';
 import { useDispatch, useSelector } from 'react-redux';
 import { message as antMessage } from 'antd';
+
+import userService from '../services/user.service';
+
 import { upload } from '../slices/video';
 import { clearMessage } from '../slices/message';
-import 'antd/dist/antd.min.css';
 
 const Video = () => {
   const [file, setFile] = useState(null);
@@ -42,8 +42,8 @@ const Video = () => {
   };
 
   useEffect(() => {
-    console.log(successRef);
-    console.log('use effect called for dependency dispatch');
+    // console.log(successRef);
+    // console.log('use effect called for dependency dispatch');
     userService.getAllFiles().then((response) => {
       setFiles(response.data);
     });
@@ -82,7 +82,7 @@ const Video = () => {
   };
 
   return (
-    <div className='container'>
+    <div className='container background-grey'>
       <Files />
       {srcUrl !== '' ? (
         <div className='container'>

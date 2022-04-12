@@ -107,7 +107,7 @@ public class MainController {
 	
 	//update course
 	@PutMapping("/instructor/courses/{id}")
-	public ResponseEntity<ApiResponse> updateCourse(@PathVariable("id") int id, @Valid @RequestBody NewCourseRequest courseRequest){
+	public ResponseEntity<?> updateCourse(@PathVariable("id") int id, @Valid @RequestBody NewCourseRequest courseRequest){
 		
 		Course course = courseRepository.findCourseById(id);
 		if(course == null) {
@@ -138,7 +138,7 @@ public class MainController {
         course.setCourseName(courseName);
         course.setCourseDescription(courseDescription);
         courseRepository.save(course);
-		return ResponseEntity.ok(new ApiResponse(true, "Course updated successfully!"));
+		return ResponseEntity.ok(new NewCourseResponse(true, "Course updated successfully!",course));
 	}
 	
 	//delete course
@@ -166,3 +166,4 @@ public class MainController {
 	
 	
 }
+

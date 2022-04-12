@@ -10,7 +10,7 @@ const Profile = () => {
   }
 
   return (
-    <div className='container'>
+    <div className='container background-grey'>
       <header className='jumbotron'>
         <h3>
           <strong>{currentUser.fullName}</strong> Profile

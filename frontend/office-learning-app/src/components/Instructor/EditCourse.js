@@ -1,21 +1,25 @@
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { message as antMessage } from 'antd';
 
-import { newCourse } from '../../slices/instructor';
+import { updateCourse } from '../../slices/instructor';
 import { clearMessage } from '../../slices/message';
 
-const NewCourse = () => {
+const EditCourse = () => {
+  const { id } = useParams();
+
   const dispatch = useDispatch();
   const { message } = useSelector((state) => state.message);
+  const { editingCourse } = useSelector((state) => state.instructor);
+
   const successRef = useRef(false);
 
   const initialValues = {
-    courseName: '',
-    courseDescription: '',
+    courseName: editingCourse.courseName,
+    courseDescription: editingCourse.courseDescription,
   };
 
   useEffect(() => {
@@ -33,9 +37,9 @@ const NewCourse = () => {
     courseName: Yup.string()
       .test(
         'len',
-        'The courseName must be between 3 and 20 characters.',
+        'The courseName must be between 3 and 40 characters.',
         (val) =>
-          val && val.toString().length >= 3 && val.toString().length <= 20
+          val && val.toString().length >= 3 && val.toString().length <= 40
       )
       .required('This field is required!'),
     courseDescription: Yup.string()
@@ -48,9 +52,9 @@ const NewCourse = () => {
       .required('This field is required!'),
   });
 
-  const handleNewCourse = (formValue) => {
+  const handleUpdateCourse = (formValue) => {
     const { courseName, courseDescription } = formValue;
-    dispatch(newCourse({ courseName, courseDescription }))
+    dispatch(updateCourse({ courseName, courseDescription, id }))
       .unwrap()
       .then(() => {
         successRef.current = true;
@@ -66,12 +70,12 @@ const NewCourse = () => {
       <Link to={'/instructor'} className='btn btn-primary'>
         <h4>Go To My Courses</h4>
       </Link>
-      <h1 className='m-5'>Add New Course</h1>
+      <h1 className='m-5'>Update Course</h1>
       <div className='form'>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={handleNewCourse}
+          onSubmit={handleUpdateCourse}
         >
           <Form>
             <div>
@@ -125,4 +129,4 @@ const NewCourse = () => {
   );
 };
 
-export default NewCourse;
+export default EditCourse;
