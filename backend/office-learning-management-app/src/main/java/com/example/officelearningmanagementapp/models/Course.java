@@ -1,11 +1,15 @@
 package com.example.officelearningmanagementapp.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Course {
@@ -22,7 +26,11 @@ public class Course {
 	@JoinColumn(name="my_user_id")
 	private MyUser myUser;
 	
+	@OneToMany(mappedBy = "course", cascade = CascadeType.REMOVE)
+	private List<Section> sections;
 	
+	@OneToMany(mappedBy = "course", cascade = CascadeType.REMOVE)
+	private List<Enrollment> enrollments;
 
 	public Course() {
 

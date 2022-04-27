@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
@@ -10,7 +10,9 @@ import { clearMessage } from '../../slices/message';
 
 const NewCourse = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { message } = useSelector((state) => state.message);
+  const { course } = useSelector((state) => state.instructor);
   const successRef = useRef(false);
 
   const initialValues = {
@@ -23,11 +25,22 @@ const NewCourse = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (message !== null && message) {
-      if (successRef.current) antMessage.success(message);
-      else antMessage.error(message);
-    }
+    //console.log(successRef.current);
+    setTimeout(() => {
+      console.log(successRef.current);
+      if (message !== null && message) {
+        if (successRef.current) {
+          antMessage.success(message, onClose);
+        } else antMessage.error(message);
+      }
+    }, 10);
   }, [message]);
+
+  const onClose = () => {
+    console.log('on close called');
+    console.log(course);
+    navigate(`/instructor/course/${course.id}/section`);
+  };
 
   const validationSchema = Yup.object().shape({
     courseName: Yup.string()
@@ -54,6 +67,7 @@ const NewCourse = () => {
       .unwrap()
       .then(() => {
         successRef.current = true;
+        console.log('in unwrap');
       })
       .catch((error) => {
         successRef.current = false;

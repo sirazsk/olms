@@ -17,8 +17,12 @@ const Instructor = () => {
   const { message } = useSelector((state) => state.message);
   const [my_courses, setMy_courses] = useState([]);
 
+  console.count('rendered Instructor componenet');
+
   useEffect(() => {
     setMy_courses(myCourses);
+    console.log('use effect for mycourses redux state ');
+    //console.log(myCourses);
   }, [myCourses]);
 
   useEffect(() => {
@@ -36,19 +40,29 @@ const Instructor = () => {
     console.log('deleting course with id: ' + id);
     dispatch(deleteCourse({ id }));
     dispatch(clearMessage());
-    dispatch(getMyCourses());
-    setMy_courses(myCourses);
+    dispatch(getMyCourses())
+      .unwrap()
+      .then(() => {
+        console.log('hello in unwrap');
+        console.log(myCourses);
+        setMy_courses(myCourses);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    //location.reload();
   };
 
   const handleEdit = (course) => {
-    console.log(course);
+    //console.log(course);
     dispatch(setEditingCourse(course));
   };
 
   const CourseComponent = (obj) => {
     const { id, courseName, courseDescription, myUser } = obj.course;
     return (
-      <div className='course col-sm-3'>
+      <div className='course col-lg-3'>
         <h2>{courseName}</h2>
         <h5>
           ID:{id}

@@ -31,11 +31,108 @@ const deleteCourse = (id) => {
   });
 };
 
+//section api
+//create section
+const newSection = (courseId, sectionName) => {
+  return axios.post(
+    API_URL + `instructor/courses/${courseId}/section`,
+    { sectionName },
+    { headers: authHeader() }
+  );
+};
+
+//get all sections in a course
+const getSection = (courseId) => {
+  return axios.get(API_URL + `instructor/courses/${courseId}/section`, {
+    headers: authHeader(),
+  });
+};
+
+//update section
+const updateSection = (courseId, sectionId, sectionName) => {
+  return axios.put(
+    API_URL + `instructor/courses/${courseId}/section/${sectionId}`,
+    { sectionName },
+    { headers: authHeader() }
+  );
+};
+
+//delete section
+const deleteSection = (courseId, sectionId) => {
+  return axios.delete(
+    API_URL + `instructor/courses/${courseId}/section/${sectionId}`,
+    { headers: authHeader() }
+  );
+};
+
+//sub section api
+//create subsection
+const newSubSection = (sectionId, subSectionName, subSectionDescription) => {
+  return axios.post(
+    API_URL + `instructor/courses/section/${sectionId}/subsection`,
+    { subSectionName, subSectionDescription },
+    { headers: authHeader() }
+  );
+};
+
+//get subsections in a section
+const getSubSection = (sectionId) => {
+  return axios.get(
+    API_URL + `instructor/courses/section/${sectionId}/subsection`,
+    { headers: authHeader() }
+  );
+};
+
+//update subsection
+const updateSubSection = (
+  sectionId,
+  subSectionId,
+  subSectionName,
+  subSectionDescription
+) => {
+  return axios.put(
+    API_URL +
+      `instructor/courses/section/${sectionId}/subsection/${subSectionId}`,
+    { subSectionName, subSectionDescription },
+    { headers: authHeader() }
+  );
+};
+
+//delete subsection
+const deleteSubSection = (sectionId, subSectionId) => {
+  return axios.delete(
+    API_URL +
+      `instructor/courses/section/${sectionId}/subsection/${subSectionId}`,
+    { headers: authHeader() }
+  );
+};
+
+//upload or update video in a subsection
+const uploadVideo = (subSectionId, file) => {
+  let formData = new FormData();
+  formData.append('file', file);
+
+  return axios.post(
+    API_URL + `instructor/courses/section/subsection/${subSectionId}/upload`,
+    formData,
+    { headers: { ...authHeader(), 'Content-Type': 'multipart/form-data' } }
+  );
+};
+
 const instructorService = {
   newCourse,
   getMyCourses,
   updateCourse,
   deleteCourse,
+  newSection,
+  getSection,
+  updateSection,
+  deleteSection,
+  newSubSection,
+  getSubSection,
+  updateSubSection,
+  deleteSubSection,
+  uploadVideo,
 };
 
 export default instructorService;

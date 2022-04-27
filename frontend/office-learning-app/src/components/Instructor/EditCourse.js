@@ -67,9 +67,18 @@ const EditCourse = () => {
 
   return (
     <div className='background-grey form-main go-back'>
-      <Link to={'/instructor'} className='btn btn-primary'>
-        <h4>Go To My Courses</h4>
-      </Link>
+      <div>
+        <Link to={'/instructor'} className='btn btn-primary mx-2'>
+          <h4>Go To My Courses</h4>
+        </Link>
+        <Link
+          to={`/instructor/course/${editingCourse.id}/section`}
+          className='btn btn-primary mx-2'
+        >
+          <h4>Add sections</h4>
+        </Link>
+      </div>
+
       <h1 className='m-5'>Update Course</h1>
       <div className='form'>
         <Formik

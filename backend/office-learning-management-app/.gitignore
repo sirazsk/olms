@@ -1,6 +1,7 @@
 HELP.md
 target/
 bin/
+uploads/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -33,17 +34,6 @@ build/
 ### VS Code ###
 .vscode/
 
-
-##############################
-## Java
-##############################
-.mtj.tmp/
-*.class
-*.jar
-*.war
-*.ear
-*.nar
-hs_err_pid*
 
 ##############################
 ## Maven

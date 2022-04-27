@@ -28,6 +28,8 @@ public class FilesStorageServiceImpl implements FilesStorageService {
 	    }
 	}
 	
+	
+	
 	@Override
 	public void save(MultipartFile file) {
 		try {
@@ -37,6 +39,21 @@ public class FilesStorageServiceImpl implements FilesStorageService {
 			throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
 	    }
 	}
+	
+	
+	
+	@Override
+	public void saveVideo(MultipartFile file, String name) {
+		try {
+			Files.copy(file.getInputStream(), this.root.resolve(name));
+		}
+		catch (Exception e) {
+			throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
+	    }
+	}
+
+
+
 	@Override
 	public Resource load(String filename) {
 		try {

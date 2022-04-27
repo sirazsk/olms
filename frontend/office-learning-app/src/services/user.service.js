@@ -20,10 +20,17 @@ const getAllFiles = () => {
   return axios.get(API_URL + 'files', { headers: authHeader() });
 };
 
+const getCourseDetails = (courseId) => {
+  return axios.get(API_URL + `student/courses/${courseId}`, {
+    headers: authHeader(),
+  });
+};
+
 const userService = {
   getHello,
   uploadFile,
   getAllFiles,
+  getCourseDetails,
 };
 
 export default userService;

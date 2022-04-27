@@ -2,6 +2,7 @@ package com.example.officelearningmanagementapp.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,8 +22,11 @@ public class MyUser {
 
 	private String password;
 	
-	@OneToMany(mappedBy = "myUser")
+	@OneToMany(mappedBy = "myUser" ,cascade = CascadeType.REMOVE)
 	private List<Course> courses;
+	
+	@OneToMany(mappedBy = "myUser",cascade = CascadeType.REMOVE)
+	private List<Enrollment> enrollments;
 	
 	public MyUser(String email, String fullName, String password) {
 		this.email=email;

@@ -16,6 +16,7 @@ import EditCourse from './components/Instructor/EditCourse';
 import NewCourse from './components/Instructor/NewCourse';
 
 import { logout, setIsInstructor, setIsStudent } from './slices/auth';
+import AddSection from './components/Instructor/AddSection';
 
 const App = () => {
   const { user: currentUser, isInstructor } = useSelector(
@@ -121,6 +122,11 @@ const App = () => {
           <Route exact path='/student' element={<Student />} />
           <Route exact path='/instructor/course/:id' element={<EditCourse />} />
           <Route exact path='/instructor/newcourse' element={<NewCourse />} />
+          <Route
+            exact
+            path='/instructor/course/:courseId/section'
+            element={<AddSection />}
+          />
         </Routes>
       </main>
     </Router>

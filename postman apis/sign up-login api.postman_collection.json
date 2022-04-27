@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "85998584-49b4-42f5-9977-cda0a85b388c",
+		"_postman_id": "a3492872-b797-48c1-879e-6da1f4731a47",
 		"name": "sign up/login api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -59,98 +59,7 @@
 					]
 				}
 			},
-			"response": [
-				{
-					"name": "localhost:8080/signin",
-					"originalRequest": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\":\"user1@email.com\",\n    \"password\":\"pass1\"\n}"
-						},
-						"url": {
-							"raw": "localhost:8080/signin",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"signin"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Vary",
-							"value": "Origin"
-						},
-						{
-							"key": "Vary",
-							"value": "Access-Control-Request-Method"
-						},
-						{
-							"key": "Vary",
-							"value": "Access-Control-Request-Headers"
-						},
-						{
-							"key": "X-Content-Type-Options",
-							"value": "nosniff"
-						},
-						{
-							"key": "X-XSS-Protection",
-							"value": "1; mode=block"
-						},
-						{
-							"key": "Cache-Control",
-							"value": "no-cache, no-store, max-age=0, must-revalidate"
-						},
-						{
-							"key": "Pragma",
-							"value": "no-cache"
-						},
-						{
-							"key": "Expires",
-							"value": "0"
-						},
-						{
-							"key": "X-Frame-Options",
-							"value": "DENY"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Sun, 27 Mar 2022 13:44:22 GMT"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=60"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"id\": 7,\n    \"jwt\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMUBlbWFpbC5jb20iLCJleHAiOjE2NDg0MjQ2NjIsImlhdCI6MTY0ODM4ODY2Mn0.rN__5Jo_vdjLEiuCfP10D-385mbJhCZFbHX4ucZJo9w\",\n    \"fullName\": \"user1\",\n    \"email\": \"user1@email.com\"\n}"
-				}
-			]
+			"response": []
 		},
 		{
 			"name": "localhost:8080/hello",
@@ -159,7 +68,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBlbWFpbC5jb20iLCJleHAiOjE2NDg0MjQ5MjQsImlhdCI6MTY0ODM4ODkyNH0.yC1CE21t2p2SFZyhwsKUeSemx1fiZrc56YsILnrAQK4",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBlbWFpbC5jb20iLCJleHAiOjE2NTA5MzExNzgsImlhdCI6MTY0OTQ1OTk0OX0.S9QBhTzl1c98RQIBGDpveZq08RDAFIsT9KoUjgLxzVQ",
 						"type": "default"
 					}
 				],
@@ -190,7 +99,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMUBlbWFpbC5jb20iLCJleHAiOjE2NDgyNTMwMDIsImlhdCI6MTY0ODIxNzAwMn0.zJu34GOIpuyHkotLz_tSEudbAxgkjHsLnTu72A4JzFM",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBlbWFpbC5jb20iLCJleHAiOjE2NTA5MzExNzgsImlhdCI6MTY0OTQ1OTk0OX0.S9QBhTzl1c98RQIBGDpveZq08RDAFIsT9KoUjgLxzVQ",
 						"type": "default"
 					}
 				],
@@ -214,7 +123,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBlbWFpbC5jb20iLCJleHAiOjE2NDg0MjQ5MjQsImlhdCI6MTY0ODM4ODkyNH0.yC1CE21t2p2SFZyhwsKUeSemx1fiZrc56YsILnrAQK4",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBlbWFpbC5jb20iLCJleHAiOjE2NTA5MzExNzgsImlhdCI6MTY0OTQ1OTk0OX0.S9QBhTzl1c98RQIBGDpveZq08RDAFIsT9KoUjgLxzVQ",
 						"type": "default"
 					},
 					{
@@ -225,7 +134,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"courseName\":\"test course 4 - user2\",\n    \"courseDescription\":\"test course description 4\"\n}"
+					"raw": "{\n    \"courseName\":\"test course 9 - user2\",\n    \"courseDescription\":\"test course description 9 \"\n}"
 				},
 				"url": {
 					"raw": "localhost:8080/instructor/courses",
@@ -248,7 +157,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBlbWFpbC5jb20iLCJleHAiOjE2NDg0MjQ5MjQsImlhdCI6MTY0ODM4ODkyNH0.yC1CE21t2p2SFZyhwsKUeSemx1fiZrc56YsILnrAQK4",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBlbWFpbC5jb20iLCJleHAiOjE2NTA5MzExNzgsImlhdCI6MTY0OTQ1OTk0OX0.S9QBhTzl1c98RQIBGDpveZq08RDAFIsT9KoUjgLxzVQ",
 						"type": "default"
 					}
 				],
@@ -273,7 +182,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{jwt}}",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBlbWFpbC5jb20iLCJleHAiOjE2NTA5MzExNzgsImlhdCI6MTY0OTQ1OTk0OX0.S9QBhTzl1c98RQIBGDpveZq08RDAFIsT9KoUjgLxzVQ",
 						"type": "default"
 					}
 				],
@@ -298,7 +207,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{jwt}}",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBlbWFpbC5jb20iLCJleHAiOjE2NTA5MzExNzgsImlhdCI6MTY0OTQ1OTk0OX0.S9QBhTzl1c98RQIBGDpveZq08RDAFIsT9KoUjgLxzVQ",
 						"type": "default"
 					},
 					{
@@ -309,10 +218,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"courseName\":\"test course 2\",\n    \"courseDescription\":\"test course description 8\"\n}"
+					"raw": "{\n    \"courseName\":\"test course 8 - user2\",\n    \"courseDescription\":\"test course description 8 update\"\n}"
 				},
 				"url": {
-					"raw": "localhost:8080/instructor/courses/10",
+					"raw": "localhost:8080/instructor/courses/24",
 					"host": [
 						"localhost"
 					],
@@ -320,31 +229,31 @@
 					"path": [
 						"instructor",
 						"courses",
-						"10"
+						"24"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "localhost:8080/checkUser",
+			"name": "localhost:8080/files",
 			"request": {
 				"method": "GET",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{jwt}}",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBlbWFpbC5jb20iLCJleHAiOjE2NTA5MzExNzgsImlhdCI6MTY0OTQ1OTk0OX0.S9QBhTzl1c98RQIBGDpveZq08RDAFIsT9KoUjgLxzVQ",
 						"type": "default"
 					}
 				],
 				"url": {
-					"raw": "localhost:8080/checkUser",
+					"raw": "localhost:8080/files",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"checkUser"
+						"files"
 					]
 				}
 			},

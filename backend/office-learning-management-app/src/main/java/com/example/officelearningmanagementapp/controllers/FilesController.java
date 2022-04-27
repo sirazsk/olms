@@ -44,7 +44,7 @@ public class FilesController {
 	}
 	
 	@GetMapping("/files/{filename:.+}")
-	public ResponseEntity<Resource> getFile(@PathVariable String filename) {
+	public ResponseEntity<Resource> getFile1(@PathVariable String filename) {
 		Resource file = filesStorageService.load(filename);
 	    return ResponseEntity.ok()
 	        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
@@ -55,7 +55,7 @@ public class FilesController {
 		List<FileInfo> fileInfos = filesStorageService.loadAll().map(path -> {
 			String filename = path.getFileName().toString();
 			String url = MvcUriComponentsBuilder
-					.fromMethodName(FilesController.class, "getFile", path.getFileName().toString()).build().toString();
+					.fromMethodName(FilesController.class, "getFile1", path.getFileName().toString()).build().toString();
 			return new FileInfo(filename, url);
 	    }).collect(Collectors.toList());
 	    return ResponseEntity.status(HttpStatus.OK).body(fileInfos);
