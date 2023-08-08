@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { message as antMessage } from 'antd';
 
-import { getSections, newSection, setUpdateOff } from '../../slices/instructor';
+import { getSections, newSection, setVideoUrl } from '../../slices/instructor';
 import { clearMessage } from '../../slices/message';
 import userService from '../../services/user.service';
 import Section from './Section';
@@ -24,6 +24,7 @@ const AddSection = () => {
 
   useEffect(() => {
     dispatch(clearMessage());
+    dispatch(setVideoUrl(''));
     console.log('use effect for start');
     fetchData();
     userService

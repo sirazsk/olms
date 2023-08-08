@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "3297bcfd-09a2-48d4-8eba-d4b06ddcc3e4",
+		"name": "instructor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get enrollments in a course",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMUBlbWFpbC5jb20iLCJleHAiOjE2NTM5ODk0MzYsImlhdCI6MTY1MjUxODIwN30.hOwQYGRBoyaNzw_b0HB116Pi5foYByvQiy2HbW8G31k",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/instructor/courses/12/enrollments",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"instructor",
+						"courses",
+						"12",
+						"enrollments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add assignment grades",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMUBlbWFpbC5jb20iLCJleHAiOjE2NTM5ODk0MzYsImlhdCI6MTY1MjUxODIwN30.hOwQYGRBoyaNzw_b0HB116Pi5foYByvQiy2HbW8G31k",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"assignmentName\":\"mid term\",\n    \"grade\":\"B+\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/instructor/enrollments/22/assignment",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"instructor",
+						"enrollments",
+						"22",
+						"assignment"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

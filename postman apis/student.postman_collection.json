@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8d474cac-dfa9-4abc-9a9d-9996930c6d9f",
+		"_postman_id": "6abd82da-d095-4186-b58f-6ba71331dcf3",
 		"name": "student",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,9 +9,194 @@
 			"name": "get single course",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBlbWFpbC5jb20iLCJleHAiOjE2NTM4NDYzMDUsImlhdCI6MTY1MjM3NTA3Nn0.X7bgRINHky82QOs-tWACUizcMGiA-h0-nYSs3z5-R48",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/student/courses/11",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student",
+						"courses",
+						"11"
+					]
+				}
 			},
 			"response": []
+		},
+		{
+			"name": "get all courses",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBlbWFpbC5jb20iLCJleHAiOjE2NTM4NDYzMDUsImlhdCI6MTY1MjM3NTA3Nn0.X7bgRINHky82QOs-tWACUizcMGiA-h0-nYSs3z5-R48",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/student/courses",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search course",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBlbWFpbC5jb20iLCJleHAiOjE2NTM4NDYzMDUsImlhdCI6MTY1MjM3NTA3Nn0.X7bgRINHky82QOs-tWACUizcMGiA-h0-nYSs3z5-R48",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/student/courses/java/search",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student",
+						"courses",
+						"java",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all enrolled courses",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBlbWFpbC5jb20iLCJleHAiOjE2NTM4NDYzMDUsImlhdCI6MTY1MjM3NTA3Nn0.X7bgRINHky82QOs-tWACUizcMGiA-h0-nYSs3z5-R48",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/student/courses/enrollment",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student",
+						"courses",
+						"enrollment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "enroll in a course",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/student/courses/12/enroll",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student",
+						"courses",
+						"12",
+						"enroll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update till watched",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBlbWFpbC5jb20iLCJleHAiOjE2NTM4NDYzMDUsImlhdCI6MTY1MjM3NTA3Nn0.X7bgRINHky82QOs-tWACUizcMGiA-h0-nYSs3z5-R48",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/student/courses/enroll/38/subsection/28",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student",
+						"courses",
+						"enroll",
+						"38",
+						"subsection",
+						"28"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all assignment grades for an enrollment",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMUBlbWFpbC5jb20iLCJleHAiOjE2NTM5ODk0MzYsImlhdCI6MTY1MjUxODIwN30.hOwQYGRBoyaNzw_b0HB116Pi5foYByvQiy2HbW8G31k",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/student/enrollment/22/assignments",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student",
+						"enrollment",
+						"22",
+						"assignments"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "jwt-user2",
+			"value": "bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMkBlbWFpbC5jb20iLCJleHAiOjE2NTM4NDYwNzgsImlhdCI6MTY1MjM3NDg0OX0.C51UlRo5X7YOOdTM1Np3JWBRNf9Ug6yMeRThD_CkqpY"
 		}
 	]
 }

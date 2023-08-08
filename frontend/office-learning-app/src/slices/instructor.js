@@ -334,6 +334,72 @@ export const uploadVideo = createAsyncThunk(
   }
 );
 
+export const getEnrollments = createAsyncThunk(
+  '/instructor/getEnrollments',
+  async ({ courseId }, thunkAPI) => {
+    try {
+      //console.log(sectionId);
+      const response = await instructorService.getEnrollments(courseId);
+      thunkAPI.dispatch(setMessage(response.data.message));
+      return response.data;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      thunkAPI.dispatch(setMessage(message));
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+export const newAssignment = createAsyncThunk(
+  '/instructor/newAssignment',
+  async ({ enrollmentId, assignmentName, grade }, thunkAPI) => {
+    try {
+      const response = await instructorService.newAssignment(
+        enrollmentId,
+        assignmentName,
+        grade
+      );
+      thunkAPI.dispatch(setSuccessOn());
+      thunkAPI.dispatch(toggleUpdate());
+      thunkAPI.dispatch(setMessage(response.data.message));
+      return response.data;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      thunkAPI.dispatch(setSuccessOff());
+      thunkAPI.dispatch(setMessage(message));
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+export const getAssignments = createAsyncThunk(
+  '/instructor/getAssignments',
+  async ({ enrollmentId }, thunkAPI) => {
+    try {
+      const response = await instructorService.getAssignments(enrollmentId);
+      thunkAPI.dispatch(setMessage(response.data.message));
+      return response.data;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      thunkAPI.dispatch(setMessage(message));
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 const instructorSlice = createSlice({
   name: 'instructor',
   initialState,

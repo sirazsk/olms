@@ -119,6 +119,30 @@ const uploadVideo = (subSectionId, file) => {
   );
 };
 
+//get enrollments in a course
+const getEnrollments = (courseId) => {
+  return axios.get(API_URL + `instructor/courses/${courseId}/enrollments`, {
+    headers: authHeader(),
+  });
+};
+
+//add assignment marks to an enrollment
+const newAssignment = (enrollmentId, assignmentName, grade) => {
+  return axios.post(
+    API_URL + `instructor/enrollments/${enrollmentId}/assignment`,
+    { assignmentName, grade },
+    { headers: authHeader() }
+  );
+};
+
+//get all assignments for the enrollment no
+const getAssignments = (enrollmentId) => {
+  return axios.get(
+    API_URL + `instructor/enrollments/${enrollmentId}/assignment`,
+    { headers: authHeader() }
+  );
+};
+
 const instructorService = {
   newCourse,
   getMyCourses,
@@ -133,6 +157,9 @@ const instructorService = {
   updateSubSection,
   deleteSubSection,
   uploadVideo,
+  getEnrollments,
+  newAssignment,
+  getAssignments,
 };
 
 export default instructorService;

@@ -14,9 +14,13 @@ import Video from './components/Video';
 import Instructor from './components/Instructor';
 import EditCourse from './components/Instructor/EditCourse';
 import NewCourse from './components/Instructor/NewCourse';
+import ViewCourse from './components/Student/ViewCourse';
 
 import { logout, setIsInstructor, setIsStudent } from './slices/auth';
 import AddSection from './components/Instructor/AddSection';
+import Enrollment from './components/Instructor/Enrollment';
+import Assignment from './components/Instructor/Assignment';
+import ViewEnrollments from './components/Student/ViewEnrollments';
 
 const App = () => {
   const { user: currentUser, isInstructor } = useSelector(
@@ -57,11 +61,11 @@ const App = () => {
                   User
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to={'../video'} className='nav-link'>
                   Video
                 </Link>
-              </li>
+              </li> */}
             </div>
           )}
         </div>
@@ -114,7 +118,7 @@ const App = () => {
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route exact path='/home' element={<Home />} />
-          <Route exact path='/video' element={<Video />} />
+          {/* <Route exact path='/video' element={<Video />} /> */}
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/register' element={<Register />} />
           <Route exact path='/profile' element={<Profile />} />
@@ -127,6 +131,18 @@ const App = () => {
             path='/instructor/course/:courseId/section'
             element={<AddSection />}
           />
+          <Route
+            exact
+            path='/instructor/course/:id/enrollment'
+            element={<Enrollment />}
+          />
+          <Route
+            exact
+            path='/instructor/enrollments/:id/assignment'
+            element={<Assignment />}
+          />
+          <Route exact path='/student/courses/:id' element={<ViewCourse />} />
+          <Route exact path='/enrollments' element={<ViewEnrollments />} />
         </Routes>
       </main>
     </Router>

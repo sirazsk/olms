@@ -137,6 +137,12 @@ label {
   display: flex;
   justify-content: space-between;
 }
+.search-section {
+  padding: 0.5rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+}
 .form input,
 textarea {
   margin: 0.5rem;

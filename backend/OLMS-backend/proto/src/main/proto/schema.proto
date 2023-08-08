@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package com.olms.example;
+
+option java_multiple_files = true;
+
+service MyService {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {
+  }
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+//message Course{
+//  string courseName=1;
+//  string courseDescription=2;
+//  string author=3;
+//}
+//
+//message CourseId{
+//  int32 courseId=1;
+//}
+//
+//service CourseService{
+//  rpc getCourse(CourseId) returns(Course){}
+//}

@@ -48,7 +48,7 @@ const NewCourse = () => {
         'len',
         'The courseName must be between 3 and 20 characters.',
         (val) =>
-          val && val.toString().length >= 3 && val.toString().length <= 20
+          val && val.toString().length >= 3 && val.toString().length <= 40
       )
       .required('This field is required!'),
     courseDescription: Yup.string()

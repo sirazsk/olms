@@ -71,6 +71,12 @@ const Instructor = () => {
         </h5>
         <p>Author: {myUser.fullName}</p>
         <Link
+          to={`/instructor/course/${id}/enrollment`}
+          className='btn btn-primary m-2'
+        >
+          View enrollments
+        </Link>
+        <Link
           to={`/instructor/course/${id}`}
           onClick={() => {
             handleEdit(obj.course);
